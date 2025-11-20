@@ -10,31 +10,45 @@ namespace PhotoArchiver.Logic
 
     public class ArchiveProcess : IArchiveProcess
     {
-        private IFileOperations _fileOperations;
-        private IDirectoryOperations _directoryOperations;
+        private readonly IFileOperations _fileOperations;
+        private readonly IPhotoDateResolver _photoDateResolver;
 
-        public ArchiveProcess():this(new FileOperations())
+        public ArchiveProcess() : this(new FileOperations())
         {
-
         }
 
         public ArchiveProcess(IFileOperations fileOperations)
+            : this(fileOperations, CreateDefaultResolver())
+        {
+        }
+
+        public ArchiveProcess(IFileOperations fileOperations, IPhotoDateResolver photoDateResolver)
         {
             _fileOperations = fileOperations;
+            _photoDateResolver = photoDateResolver;
         }
 
         public void ArchivePhotosBasedOnDays(string SourceDirectory, string DestinationDirectory, bool cleanUpSource)
         {
-            //Todo: Get Files From Source Directory
             List<FileInformation> filePaths = _fileOperations.GetFilesInDirectory(SourceDirectory);
-            FileNameGenerator fng = new FileNameGenerator(_fileOperations);
+            FileNameGenerator fileNameGenerator = new FileNameGenerator(_fileOperations, _photoDateResolver);
             List<FileInformation> populatedFileInformation = new List<FileInformation>();
             foreach (FileInformation fileInformation in filePaths)
             {
-                populatedFileInformation.Add(fng.GenerateFullyQualifiedName(fileInformation, DestinationDirectory));
+                populatedFileInformation.Add(fileNameGenerator.GenerateFullyQualifiedName(fileInformation, DestinationDirectory));
             }
-            _fileOperations.CopyFilesToDirectory(filePaths, false);
-            
+
+            _fileOperations.CopyFilesToDirectory(populatedFileInformation, false);
+        }
+
+        private static IPhotoDateResolver CreateDefaultResolver()
+        {
+            return new PhotoDateResolver(new List<IPhotoDateStrategy>
+            {
+                new Strategies.FileNamePhotoDateStrategy(),
+                new Strategies.JpegMetadataPhotoDateStrategy(new ExifMetadataReader()),
+                new Strategies.FileSystemPhotoDateStrategy()
+            });
         }
     }
 }
