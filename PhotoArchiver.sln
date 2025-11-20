@@ -5,6 +5,8 @@ VisualStudioVersion = 18.0.11217.181 d18.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhotoArchiver", "PhotoArchiver\PhotoArchiver.csproj", "{F36DBC37-B980-4261-8E41-87A0C2EEC1D5}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhotoArchiver.Api", "PhotoArchiver.Api\PhotoArchiver.Api.csproj", "{C06BF75D-C1CB-48E6-B4B9-8C33CEFE0AF5}"
+EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LarryGasik.FileSystem", "LarryGasik.FileSystem\LarryGasik.FileSystem.csproj", "{D4E891C5-DBF3-4C90-A821-9BAA200F5891}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhotoArchiver.Logic", "PhotoArchiver.Logic\PhotoArchiver.Logic.csproj", "{8A453CC6-AC94-4E62-8724-1C8684117114}"
@@ -21,13 +23,17 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F36DBC37-B980-4261-8E41-87A0C2EEC1D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F36DBC37-B980-4261-8E41-87A0C2EEC1D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F36DBC37-B980-4261-8E41-87A0C2EEC1D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F36DBC37-B980-4261-8E41-87A0C2EEC1D5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D4E891C5-DBF3-4C90-A821-9BAA200F5891}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D4E891C5-DBF3-4C90-A821-9BAA200F5891}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D4E891C5-DBF3-4C90-A821-9BAA200F5891}.Release|Any CPU.ActiveCfg = Release|Any CPU
+                {F36DBC37-B980-4261-8E41-87A0C2EEC1D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+                {F36DBC37-B980-4261-8E41-87A0C2EEC1D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+                {F36DBC37-B980-4261-8E41-87A0C2EEC1D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+                {F36DBC37-B980-4261-8E41-87A0C2EEC1D5}.Release|Any CPU.Build.0 = Release|Any CPU
+                {C06BF75D-C1CB-48E6-B4B9-8C33CEFE0AF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+                {C06BF75D-C1CB-48E6-B4B9-8C33CEFE0AF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+                {C06BF75D-C1CB-48E6-B4B9-8C33CEFE0AF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+                {C06BF75D-C1CB-48E6-B4B9-8C33CEFE0AF5}.Release|Any CPU.Build.0 = Release|Any CPU
+                {D4E891C5-DBF3-4C90-A821-9BAA200F5891}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+                {D4E891C5-DBF3-4C90-A821-9BAA200F5891}.Debug|Any CPU.Build.0 = Debug|Any CPU
+                {D4E891C5-DBF3-4C90-A821-9BAA200F5891}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D4E891C5-DBF3-4C90-A821-9BAA200F5891}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8A453CC6-AC94-4E62-8724-1C8684117114}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8A453CC6-AC94-4E62-8724-1C8684117114}.Debug|Any CPU.Build.0 = Debug|Any CPU
