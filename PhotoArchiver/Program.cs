@@ -1,20 +1,38 @@
-﻿using System;
+using System;
+using PhotoArchiver.Configuration;
 using PhotoArchiver.Logic;
 
 namespace PhotoArchiver
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-            string destination = @"D:\My Pictures\";
-            string source = @"C:\DCIM\Camera\";
+            Run(args, new SettingsProvider(), new ArchiveProcess());
+        }
 
-            ArchiveProcess processor = new ArchiveProcess();
-            //processor.ArchivePhotosBasedOnDays(source,destination,false);
+        public static void Run(string[] args, ISettingsProvider settingsProvider, IArchiveProcess archiveProcess, bool waitForUserInput = true)
+        {
+            if (settingsProvider == null)
+            {
+                throw new ArgumentNullException(nameof(settingsProvider));
+            }
+
+            if (archiveProcess == null)
+            {
+                throw new ArgumentNullException(nameof(archiveProcess));
+            }
+
+            ArchiveSettings settings = settingsProvider.GetSettings(args);
+
+            archiveProcess.ArchivePhotosBasedOnDays(settings.SourceDirectory, settings.DestinationDirectory, false);
+
             Console.Write("Done");
-            Console.ReadLine();
+
+            if (waitForUserInput)
+            {
+                Console.ReadLine();
+            }
         }
     }
 }

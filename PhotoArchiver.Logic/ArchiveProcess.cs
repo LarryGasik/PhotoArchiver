@@ -3,7 +3,12 @@ using LarryGasik.FileSystem;
 
 namespace PhotoArchiver.Logic
 {
-    public class ArchiveProcess
+    public interface IArchiveProcess
+    {
+        void ArchivePhotosBasedOnDays(string SourceDirectory, string DestinationDirectory, bool cleanUpSource);
+    }
+
+    public class ArchiveProcess : IArchiveProcess
     {
         private IFileOperations _fileOperations;
         private IDirectoryOperations _directoryOperations;
