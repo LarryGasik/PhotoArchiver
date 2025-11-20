@@ -9,4 +9,8 @@
     <ProjectReference Include="..\LarryGasik.FileSystem\LarryGasik.FileSystem.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="MetadataExtractor" Version="2.9.0" />
+  </ItemGroup>
+
 </Project>
