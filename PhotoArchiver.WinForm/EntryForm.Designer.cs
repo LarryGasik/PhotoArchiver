@@ -35,6 +35,7 @@ namespace PhotoArchiver.WinForm
             destinationTextBox = new TextBox();
             browseDestinationButton = new Button();
             archiveButton = new Button();
+            openSourceButton = new Button();
             openDestinationButton = new Button();
             SuspendLayout();
             // 
@@ -95,7 +96,7 @@ namespace PhotoArchiver.WinForm
             browseDestinationButton.Click += BrowseDestinationButton_Click;
             // 
             // archiveButton
-            // 
+            //
             archiveButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             archiveButton.Location = new Point(464, 147);
             archiveButton.Name = "archiveButton";
@@ -104,15 +105,26 @@ namespace PhotoArchiver.WinForm
             archiveButton.Text = "Archive";
             archiveButton.UseVisualStyleBackColor = true;
             archiveButton.Click += ArchiveButton_Click;
-            // 
+            //
+            // openSourceButton
+            //
+            openSourceButton.Anchor = AnchorStyles.Top | AnchorStyles.Left;
+            openSourceButton.Location = new Point(23, 147);
+            openSourceButton.Name = "openSourceButton";
+            openSourceButton.Size = new Size(192, 27);
+            openSourceButton.TabIndex = 7;
+            openSourceButton.Text = "Open source folder";
+            openSourceButton.UseVisualStyleBackColor = true;
+            openSourceButton.Click += OpenSourceButton_Click;
+            //
             // openDestinationButton
-            // 
+            //
             openDestinationButton.Anchor = AnchorStyles.Top | AnchorStyles.Left;
             openDestinationButton.Enabled = false;
-            openDestinationButton.Location = new Point(23, 147);
+            openDestinationButton.Location = new Point(221, 147);
             openDestinationButton.Name = "openDestinationButton";
             openDestinationButton.Size = new Size(192, 27);
-            openDestinationButton.TabIndex = 7;
+            openDestinationButton.TabIndex = 8;
             openDestinationButton.Text = "Open destination folder";
             openDestinationButton.UseVisualStyleBackColor = true;
             openDestinationButton.Click += OpenDestinationButton_Click;
@@ -123,6 +135,7 @@ namespace PhotoArchiver.WinForm
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(585, 199);
             Controls.Add(openDestinationButton);
+            Controls.Add(openSourceButton);
             Controls.Add(archiveButton);
             Controls.Add(browseDestinationButton);
             Controls.Add(destinationTextBox);
@@ -147,6 +160,7 @@ namespace PhotoArchiver.WinForm
         private TextBox destinationTextBox;
         private Button browseDestinationButton;
         private Button archiveButton;
+        private Button openSourceButton;
         private Button openDestinationButton;
     }
 }
