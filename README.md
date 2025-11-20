@@ -10,7 +10,7 @@ Archive your photos in a simple, reproducible way. Point to a source, point to a
 - **PhotoArchiver.Tests** and **PhotoArchiver.Logic.Tests**: Automated tests covering logic and integration points.
 
 ## Technologies & dependencies
-- **.NET 10 (preview)** for all projects, enabling modern C# features and cross-project sharing. [Documentation](https://learn.microsoft.com/dotnet/)
+- **.NET 10** for all projects, enabling modern C# features and cross-project sharing. [Documentation](https://learn.microsoft.com/dotnet/)
 - **Windows Forms** for the desktop UI project. [Documentation](https://learn.microsoft.com/dotnet/desktop/winforms/)
 - **xUnit 2.8** for unit testing. [Package](https://www.nuget.org/packages/xunit/) | [Docs](https://xunit.net/)
 - **Moq 4.20** for mocking collaborators in tests. [Package](https://www.nuget.org/packages/Moq/) | [Docs](https://github.com/moq/moq4/wiki)
@@ -18,7 +18,7 @@ Archive your photos in a simple, reproducible way. Point to a source, point to a
 - **coverlet.collector 6.0** for code coverage collection. [Package](https://www.nuget.org/packages/coverlet.collector/) | [Docs](https://github.com/coverlet-coverage/coverlet/blob/master/Documentation/Collector.md)
 
 ## Getting started
-1. Install the [.NET SDK 10 preview](https://dotnet.microsoft.com/en-us/download/dotnet/10.0).
+1. Install the [.NET SDK 10](https://dotnet.microsoft.com/en-us/download/dotnet/10.0).
 2. Restore dependencies:
    ```bash
    dotnet restore
@@ -39,6 +39,3 @@ This uses xUnit with Moq for isolating dependencies and `coverlet.collector` for
 - Reads settings (source and destination) and invokes the archive process from `Program.Main`.
 - Enumerates files from the source, determines album folders by date, and constructs unique destination filenames.
 - Copies files into the destination structure, creating folders as needed via the file system abstraction.
-
-## Contributing
-Feel free to open issues or pull requests for improvements such as enhanced metadata parsing, duplicate detection, or a richer Windows Forms UI.
