@@ -1,6 +1,4 @@
 using System;
-using Microsoft.VisualStudio.TestPlatform.ObjectModel.Adapter;
-using Microsoft.VisualStudio.TestPlatform.TestHost;
 using Moq;
 using PhotoArchiver.Configuration;
 using PhotoArchiver.Logic;
