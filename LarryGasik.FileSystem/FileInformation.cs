@@ -6,7 +6,7 @@ namespace LarryGasik.FileSystem
     {
         public FileInformation(string fullyQualifiedSourcePath)
         {
-            FileInfo file = new FileInfo(fullyQualifiedSourcePath);
+            var file = new FileInfo(fullyQualifiedSourcePath);
             FullyQualifiedSourceName = fullyQualifiedSourcePath;
             FileName = file.Name;
             DestinationFileName = file.Name;

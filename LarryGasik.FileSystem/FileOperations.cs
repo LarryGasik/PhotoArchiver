@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 
 namespace LarryGasik.FileSystem
 {
@@ -10,13 +8,13 @@ namespace LarryGasik.FileSystem
     {
         public void CopyFilesToDirectory( List<FileInformation> filesToMove, bool deleteOriginal = false)
         {
-            foreach (string path in filesToMove.Select(x => x.DestinationPath).Distinct())
+            foreach (var path in filesToMove.Select(x => x.DestinationPath).Distinct())
             {
                 if (Directory.Exists(path) == false)
                     Directory.CreateDirectory(path);
             }
 
-            foreach (FileInformation someFile in filesToMove)
+            foreach (var someFile in filesToMove)
             {
                 File.Copy(someFile.FullyQualifiedSourceName, someFile.FullyQualifiedDestinationName);
             }
