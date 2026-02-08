@@ -5,8 +5,7 @@ namespace PhotoArchiver.Logic
 {
     public class ArchiveProcess
     {
-        private IFileOperations _fileOperations;
-        private IDirectoryOperations _directoryOperations;
+        private readonly IFileOperations _fileOperations;
 
         public ArchiveProcess():this(new FileOperations())
         {
@@ -18,17 +17,17 @@ namespace PhotoArchiver.Logic
             _fileOperations = fileOperations;
         }
 
-        public void ArchivePhotosBasedOnDays(string SourceDirectory, string DestinationDirectory, bool cleanUpSource)
+        public void ArchivePhotosBasedOnDays(string sourceDirectory, string destinationDirectory)
         {
-            //Todo: Get Files From Source Directory
-            List<FileInformation> filePaths = _fileOperations.GetFilesInDirectory(SourceDirectory);
-            FileNameGenerator fng = new FileNameGenerator(_fileOperations);
-            List<FileInformation> populatedFileInformation = new List<FileInformation>();
-            foreach (FileInformation fileInformation in filePaths)
+            var filePaths = _fileOperations.GetFilesInDirectory(sourceDirectory);
+            var fng = new FileNameGenerator(_fileOperations);
+            var populatedFileInformation = new List<FileInformation>();
+
+            foreach (var fileInformation in filePaths)
             {
-                populatedFileInformation.Add(fng.GenerateFullyQualifiedName(fileInformation, DestinationDirectory));
+                populatedFileInformation.Add(fng.GenerateFullyQualifiedName(fileInformation, destinationDirectory));
             }
-            _fileOperations.CopyFilesToDirectory(filePaths, false);
+            _fileOperations.CopyFilesToDirectory(populatedFileInformation, false);
             
         }
     }

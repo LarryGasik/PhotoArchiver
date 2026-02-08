@@ -1,22 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 
 namespace LarryGasik.FileSystem
 {
     public class FileOperations:IFileOperations
     {
-        public void CopyFilesToDirectory( List<FileInformation> FilesToMove, bool DeleteOriginal)
+        public void CopyFilesToDirectory( List<FileInformation> filesToMove, bool deleteOriginal)
         {
-            foreach (string path in FilesToMove.Select(x => x.DestinationPath).Distinct())
+            foreach (var path in filesToMove.Select(x => x.DestinationPath).Distinct())
             {
                 if (Directory.Exists(path) == false)
                     Directory.CreateDirectory(path);
             }
 
-            foreach (FileInformation someFile in FilesToMove)
+            foreach (var someFile in filesToMove)
             {
                 File.Copy(someFile.FullyQualifiedSourceName, someFile.FullyQualifiedDestinationName);
             }

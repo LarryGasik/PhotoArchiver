@@ -41,6 +41,7 @@ namespace PhotoArchiver.Logic.Tests.FileNameGenerator
             
             //Assert
             Assert.NotNull(result.DestinationFileName);
+            Assert.Equal(@"20140202_123030.jpg", result.DestinationFileName);
         }
 
         [Fact]

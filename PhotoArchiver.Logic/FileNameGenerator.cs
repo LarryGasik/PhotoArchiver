@@ -1,11 +1,10 @@
-﻿using System;
-using LarryGasik.FileSystem;
+﻿using LarryGasik.FileSystem;
 
 namespace PhotoArchiver.Logic
 {
     public class FileNameGenerator
     {
-        private IFileOperations _fileOperations;
+        private readonly IFileOperations _fileOperations;
 
         public FileNameGenerator(IFileOperations fileOperationsObject)
         {
@@ -17,13 +16,14 @@ namespace PhotoArchiver.Logic
             FileInformation resultingFileInformation = fileInformation;
             resultingFileInformation.Album = AlbumNameGenerator.GenerateAlbumName(fileInformation.FileName);
             resultingFileInformation.DestinationPath = destinationDirectory + fileInformation.Album + @"\";
-            bool isUnique = false;
-            int counter = 0;
+            var isUnique = false;
+            var counter = 0;
             while (!isUnique)
             {
-                string uniqueFileName = resultingFileInformation.DestinationPath + GenerateFileNameSequence(fileInformation, counter);
+                var uniqueFileName = resultingFileInformation.DestinationPath +
+                                     GenerateFileNameSequence(fileInformation, counter);
 
-                if (_fileOperations.DoesFileExist(uniqueFileName) == false)
+                if (!_fileOperations.DoesFileExist(uniqueFileName))
                 {
                     resultingFileInformation.FullyQualifiedDestinationName = uniqueFileName;
                     isUnique = true;
@@ -31,6 +31,7 @@ namespace PhotoArchiver.Logic
 
                 counter++;
             }
+
             return resultingFileInformation;
         }
 
