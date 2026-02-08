@@ -16,13 +16,12 @@ namespace PhotoArchiver.Logic
         {
             FileInformation resultingFileInformation = fileInformation;
             resultingFileInformation.Album = AlbumNameGenerator.GenerateAlbumName(fileInformation.FileName);
-            var albumPath = Path.Combine(destinationDirectory, fileInformation.Album);
-            resultingFileInformation.DestinationPath = albumPath + Path.DirectorySeparatorChar;
+            resultingFileInformation.DestinationPath = Path.Combine(destinationDirectory, fileInformation.Album);
             var isUnique = false;
             var counter = 0;
             while (!isUnique)
             {
-                var uniqueFileName = Path.Combine(albumPath, GenerateFileNameSequence(fileInformation, counter));
+                var uniqueFileName = Path.Combine(resultingFileInformation.DestinationPath, GenerateFileNameSequence(fileInformation, counter));
 
                 if (!_fileOperations.DoesFileExist(uniqueFileName))
                 {
