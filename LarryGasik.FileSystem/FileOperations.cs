@@ -6,7 +6,7 @@ namespace LarryGasik.FileSystem
 {
     public class FileOperations:IFileOperations
     {
-        public void CopyFilesToDirectory( List<FileInformation> filesToMove, bool deleteOriginal)
+        public void CopyFilesToDirectory( List<FileInformation> filesToMove, bool deleteOriginal = false)
         {
             foreach (var path in filesToMove.Select(x => x.DestinationPath).Distinct())
             {
