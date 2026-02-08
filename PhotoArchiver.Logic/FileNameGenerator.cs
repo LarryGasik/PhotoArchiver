@@ -1,4 +1,5 @@
-﻿using LarryGasik.FileSystem;
+﻿using System.IO;
+using LarryGasik.FileSystem;
 
 namespace PhotoArchiver.Logic
 {
@@ -15,7 +16,7 @@ namespace PhotoArchiver.Logic
         {
             FileInformation resultingFileInformation = fileInformation;
             resultingFileInformation.Album = AlbumNameGenerator.GenerateAlbumName(fileInformation.FileName);
-            resultingFileInformation.DestinationPath = destinationDirectory + fileInformation.Album + @"\";
+            resultingFileInformation.DestinationPath = Path.Combine(destinationDirectory, fileInformation.Album) + Path.DirectorySeparatorChar;
             var isUnique = false;
             var counter = 0;
             while (!isUnique)
