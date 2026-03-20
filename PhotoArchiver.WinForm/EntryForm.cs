@@ -101,5 +101,22 @@ namespace PhotoArchiver.WinForm
                 UseShellExecute = true
             });
         }
+
+        private void OpenSourceButton_Click(object? sender, EventArgs e)
+        {
+            var sourcePath = sourceTextBox.Text;
+
+            if (!Directory.Exists(sourcePath))
+            {
+                MessageBox.Show(this, "Source directory does not exist.", "Folder not found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            Process.Start(new ProcessStartInfo
+            {
+                FileName = sourcePath,
+                UseShellExecute = true
+            });
+        }
     }
 }
