@@ -39,3 +39,4 @@ This uses xUnit with Moq for isolating dependencies and `coverlet.collector` for
 - Reads settings (source and destination) and invokes the archive process from `Program.Main`.
 - Enumerates files from the source, determines album folders by date, and constructs unique destination filenames.
 - Copies files into the destination structure, creating folders as needed via the file system abstraction.
+- Does other stuff.
